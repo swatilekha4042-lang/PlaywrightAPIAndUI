@@ -1,0 +1,76 @@
+{
+  "startAt": 0,
+  "maxResults": 20,
+  "total": 3,
+  "dashboards": [
+    {
+      "description": "",
+      "id": "10002",
+      "isFavourite": true,
+      "name": "anotherDashboard",
+      "owner": {
+        "self": "https://swatilekha4042.atlassian.net/rest/api/3/user?accountId=712020:c1e0f077-be2b-49c5-a993-536064dbbf99",
+        "displayName": "Swatilekha Behera",
+        "active": true,
+        "accountId": "712020:c1e0f077-be2b-49c5-a993-536064dbbf99",
+        "avatarUrls": {
+          "32x32": "https://secure.gravatar.com/avatar/24ad193d2acf53cf012dbb9a60071d95?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png",
+          "24x24": "https://secure.gravatar.com/avatar/24ad193d2acf53cf012dbb9a60071d95?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png",
+          "16x16": "https://secure.gravatar.com/avatar/24ad193d2acf53cf012dbb9a60071d95?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png",
+          "48x48": "https://secure.gravatar.com/avatar/24ad193d2acf53cf012dbb9a60071d95?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png"
+        }
+      },
+      "popularity": 1,
+      "rank": 1,
+      "self": "https://swatilekha4042.atlassian.net/rest/api/3/dashboard/10002",
+      "sharePermissions": [],
+      "editPermissions": [],
+      "view": "/jira/dashboards/10002",
+      "isWritable": true,
+      "systemDashboard": false
+    },
+    {
+      "id": "10000",
+      "isFavourite": false,
+      "name": "Default dashboard",
+      "popularity": 0,
+      "self": "https://swatilekha4042.atlassian.net/rest/api/3/dashboard/10000",
+      "sharePermissions": [
+        {
+          "id": 10000,
+          "type": "loggedin"
+        }
+      ],
+      "editPermissions": [],
+      "view": "/jira/dashboards/10000",
+      "isWritable": true,
+      "systemDashboard": true
+    },
+    {
+      "description": "",
+      "id": "10001",
+      "isFavourite": true,
+      "name": "mydashboard",
+      "owner": {
+        "self": "https://swatilekha4042.atlassian.net/rest/api/3/user?accountId=712020:c1e0f077-be2b-49c5-a993-536064dbbf99",
+        "displayName": "Swatilekha Behera",
+        "active": true,
+        "accountId": "712020:c1e0f077-be2b-49c5-a993-536064dbbf99",
+        "avatarUrls": {
+          "32x32": "https://secure.gravatar.com/avatar/24ad193d2acf53cf012dbb9a60071d95?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png",
+          "24x24": "https://secure.gravatar.com/avatar/24ad193d2acf53cf012dbb9a60071d95?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png",
+          "16x16": "https://secure.gravatar.com/avatar/24ad193d2acf53cf012dbb9a60071d95?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png",
+          "48x48": "https://secure.gravatar.com/avatar/24ad193d2acf53cf012dbb9a60071d95?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png"
+        }
+      },
+      "popularity": 1,
+      "rank": 0,
+      "self": "https://swatilekha4042.atlassian.net/rest/api/3/dashboard/10001",
+      "sharePermissions": [],
+      "editPermissions": [],
+      "view": "/jira/dashboards/10001",
+      "isWritable": true,
+      "systemDashboard": false
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","2371","Api to fetch the Jira dashboards","chromium","2026-06-05","passed","2026-06-05","","JiraTestcases.spec.js","",""
