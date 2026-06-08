@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 
-test.only('GET Request 1', async ({ request }) => {
+test('GET Request 1', async ({ request }) => {
 
     const response = await request.get('https://api.restful-api.dev/objects')
     const responseBody = await response.json()

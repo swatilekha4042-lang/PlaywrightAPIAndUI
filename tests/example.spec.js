@@ -10,7 +10,7 @@ test("Login to salesforce",async ({page}) => {
 })
 
 //get by role
-test.only("Login to salesforce Uk",async ({page}) => {
+test("Login to salesforce Uk",async ({page}) => {
 
   await page.goto("https://www.salesforce.com/uk/form/signup/sales-ee/")
   await page.pause();

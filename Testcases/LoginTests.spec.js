@@ -19,7 +19,7 @@ for (const data of testData) {
 
 //Reading data from a json file
 for (const data of jsonData) {
-    test.only(`JSON Login and Logout application for user ${data.username}`, async ({ page }) => {
+    test(`JSON Login and Logout application for user ${data.username}`, async ({ page }) => {
 
         const pageManagerInstance = new PageManager(page)
         await pageManagerInstance.getLoginPageInstance().openApplication()
