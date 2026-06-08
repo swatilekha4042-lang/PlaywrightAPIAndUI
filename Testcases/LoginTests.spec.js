@@ -5,7 +5,8 @@ import jsonData from '../testData/jsonLoginData.json' with {type:'json'}
 
 
 const testData = await readCSV('./testData/loginData.csv')
- 
+
+//Reading data from a csv file
 for (const data of testData) {
     test(`CSV Login and Logout application for user ${data.username}`, async ({ page }) => {
 
@@ -16,6 +17,7 @@ for (const data of testData) {
     
 }
 
+//Reading data from a json file
 for (const data of jsonData) {
     test.only(`JSON Login and Logout application for user ${data.username}`, async ({ page }) => {
 
