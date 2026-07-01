@@ -44,7 +44,7 @@ test('E2E Scenario', async ({ pageManager,checkoutData }) => {
 })
 
 /** To verify the shopping cart count persists in new tab as well */
-test.only('Verify shopping cart count persitence across tabs',async({context,pageManager,createNewPageManager}) => {
+test('Verify shopping cart count persitence across tabs',async({context,pageManager,createNewPageManager}) => {
 
     //Tab 1
     await pageManager.getLoginPageInstance().openApplication()
@@ -98,5 +98,4 @@ test('End to end scenario with multiple users', async ({ browser }) => {
 
 
 })
-
 

@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "runner1": "npx playwright test /tests/saucedemo.spec.js --project=swati",
     "runner2": "npx playwright test",
-    "runner3": "npx playwright test /tests/useFixture.spec.js",
     "clean-allure": "rm -rf allure-results allure-reports",
     "api-allure": "npm run clean-allure && npx playwright test Testcases/APITestcases.spec.js && allure generate allure-results --clean -o allure-report && allure open allure-report",
     "ui-allure": "npm run clean-allure && npx playwright test Testcases/LoginTests.spec.js && allure generate allure-results --clean -o allure-report && allure open allure-report",

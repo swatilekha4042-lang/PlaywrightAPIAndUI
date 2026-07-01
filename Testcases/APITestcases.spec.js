@@ -11,7 +11,7 @@ test('GET Request 1', async ({ request }) => {
 
 })
 
-test.only('POST Request ', async ({ request }) => {
+test('POST Request ', async ({ request }) => {
 
    const response = await request.post('https://api.restful-api.dev/objects',
         {
