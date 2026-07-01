@@ -11,7 +11,7 @@ test('GET Request 1', async ({ request }) => {
 
 })
 
-test('POST Request ', async ({ request }) => {
+test.only('POST Request ', async ({ request }) => {
 
    const response = await request.post('https://api.restful-api.dev/objects',
         {
@@ -28,41 +28,28 @@ test('POST Request ', async ({ request }) => {
     })
 
     expect(response.status()).toBe(200)
+    expect(response.ok()).toBeTruthy()
     const responseBody = await response.json()
+    console.log("============ POST RESPONSE ===========")
     console.log(responseBody)
-})
+    
+    const{id, createdAt, ...bodyWithoutIdAndCreatedAt } = responseBody
+    bodyWithoutIdAndCreatedAt.name = 'Updated Swati MacBook Pro 16';
 
-// {
-//     id: 'ff8081819d82fab6019e888276282dc7',
-//         name: 'Swati MacBook Pro 16',
-//             createdAt: 1780406711848,
-//                 data: {
-//         year: 2019,
-//             price: 1849.99,
-//                 'CPU model': 'Intel Core i9',
-//                     'Hard disk size': '1 TB'
-//     }
-// }
-
-test('PUT Request ', async ({ request }) => {
-
-   const response = await request.put('https://api.restful-api.dev/objects/ff8081819d82fab6019e888276282dc7',
+    //Using PUT METHOD 
+    const putResponse = await request.put(`https://api.restful-api.dev/objects/${id}`,
         {
         headers: {'Content-Type': 'application/json'},
-        data: {
-            "name": "Swati MacBook Pro 16",
-            "data": {
-                "year": 2019,
-                "price": 1849.99,
-                "CPU model": "Apple M1 Pro",
-                "Hard disk size": "1 TB"
-            }
-        }
+        data: bodyWithoutIdAndCreatedAt
     })
 
-    expect(response.status()).toBe(200)
-    const responseBody = await response.json()
-    console.log(responseBody)
+    expect(putResponse.status()).toBe(200)
+    expect(putResponse.ok()).toBeTruthy();
+    const putResponseBody = await putResponse.json()
+    console.log("=========== PUT RESPONSE =============")
+    console.log(putResponseBody)
+
+    
 })
 
 test('PATCH Request ', async ({ request }) => {

@@ -14,7 +14,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   timeout: 20_000,
-  expect: {timeout: 10_000,},
+  expect: { timeout: 10_000, },
   testDir: './Testcases',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -28,29 +28,61 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['list'],
+    ['html'],
     ['allure-playwright', { resultsDir: 'allure-results' }]
   ]
-,
+  ,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
-    headless:!!process.env.CI
+    trace: 'on',
+    headless: !!process.env.CI
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'],viewport:{ width:1492,height:731} ,headless : true},
+      name: 'setup',
+      testMatch: /AuthSetUp\.spec\.js/,
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: 'chrome',
+        headless: false,
+      },
     },
-   /*  {
-      name: 'swati',
-      use: { ...devices['Desktop Firefox'] ,headless:false},
-    }, */
+    {
+      // Run it like npx playwright test --project="login session storage"
+      name: 'login session storage',
+      testMatch: /LoginSessionStorage\.spec\.js/,
+      dependencies: ['setup'],
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: 'chrome',
+        headless: false,
+        storageState: 'testData/auth.json',
+      },
+    },
+
+    {
+      name: 'chromium',
+      testIgnore: /LoginSessionStorage\.spec\.js/,
+      use: { ...devices['Desktop Chrome'], viewport: { width: 1492, height: 731 }, headless: false },
+    },
+    {
+      name: 'google-chrome',
+      use: {
+        testIgnore: /LoginSessionStorage\.spec\.js/,
+        ...devices['Desktop Chrome'],
+        channel: 'chrome',
+      },
+    },
+    /*  {
+       name: 'swati',
+       use: { ...devices['Desktop Firefox'] ,headless:false},
+     }, */
 
     /* {
       name: 'firefox',
