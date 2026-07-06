@@ -71,55 +71,14 @@ export default defineConfig({
       testIgnore: /LoginSessionStorage\.spec\.js/,
       use: { ...devices['Desktop Chrome'], viewport: { width: 1492, height: 731 }, headless: false },
     },
-    {
-      name: 'google-chrome',
-      use: {
-        testIgnore: /LoginSessionStorage\.spec\.js/,
-        ...devices['Desktop Chrome'],
-        channel: 'chrome',
-      },
-    },
-    /*  {
-       name: 'swati',
-       use: { ...devices['Desktop Firefox'] ,headless:false},
-     }, */
-
-    /* {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    }, */
-
-    /* Test against mobile viewports. */
     // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+    //   name: 'google-chrome',
+    //   use: {
+    //     testIgnore: /LoginSessionStorage\.spec\.js/,
+    //     ...devices['Desktop Chrome'],
+    //     channel: 'chrome',
+    //   },
     // },
   ],
-
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
 });
 
