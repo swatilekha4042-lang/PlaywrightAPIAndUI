@@ -50,7 +50,7 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         channel: 'chrome',
-        headless: false,
+        headless: !!process.env.CI,
       },
     },
     {
@@ -61,7 +61,7 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         channel: 'chrome',
-        headless: false,
+        headless: !!process.env.CI,
         storageState: 'TestData/auth.json',
       },
     },
