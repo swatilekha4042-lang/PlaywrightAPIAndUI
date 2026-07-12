@@ -50,7 +50,7 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         channel: 'chrome',
-        headless: false,
+        headless: !!process.env.CI,
       },
     },
     {
@@ -61,7 +61,7 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         channel: 'chrome',
-        headless: false,
+        headless: !!process.env.CI,
         storageState: 'TestData/auth.json',
       },
     },
@@ -69,7 +69,7 @@ export default defineConfig({
     {
       name: 'chromium',
       testIgnore: /LoginSessionStorage\.spec\.js/,
-      use: { ...devices['Desktop Chrome'], viewport: { width: 1492, height: 731 }, headless: false },
+      use: { ...devices['Desktop Chrome'], viewport: { width: 1492, height: 731 }, headless: !!process.env.CI },
     },
     // {
     //   name: 'google-chrome',
