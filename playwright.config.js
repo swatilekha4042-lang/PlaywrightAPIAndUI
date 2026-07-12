@@ -69,7 +69,7 @@ export default defineConfig({
     {
       name: 'chromium',
       testIgnore: /LoginSessionStorage\.spec\.js/,
-      use: { ...devices['Desktop Chrome'], viewport: { width: 1492, height: 731 }, headless: false },
+      use: { ...devices['Desktop Chrome'], viewport: { width: 1492, height: 731 }, headless: !!process.env.CI },
     },
     // {
     //   name: 'google-chrome',
