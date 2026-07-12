@@ -62,7 +62,7 @@ export default defineConfig({
         ...devices['Desktop Chrome'],
         channel: 'chrome',
         headless: false,
-        storageState: 'testData/auth.json',
+        storageState: 'TestData/auth.json',
       },
     },
 

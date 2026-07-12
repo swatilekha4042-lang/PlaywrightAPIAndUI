@@ -1,186 +1,91 @@
 # Playwright Basics
 
-This project is a Playwright learning and practice repository covering UI automation, API testing, visual testing, fixtures, page objects, storage state, and reporting.
+Playwright practice project for UI, API, visual, fixture, and storage-state testing.
 
-The configured test suite lives in `Testcases/`.
-
-## Tech Stack
+## Stack
 
 - Playwright Test
 - JavaScript ES modules
 - Page Object Model
 - Custom fixtures
 - CSV and JSON test data
-- Playwright APIRequestContext
-- Visual snapshots
-- HTML and Allure reports
+- Allure and Playwright HTML reports
 
-## Project Structure
+## Structure
 
 ```text
-.
-├── Fixtures/              # Custom Playwright fixtures
-├── PageObjects/           # Page Object Model classes
-├── TestData/              # CSV, JSON, and auth storage state data
-├── Testcases/             # Main Playwright suite configured in playwright.config.js
-├── Utils/                 # Utility helpers such as CSV reader
-├── playwright.config.js   # Playwright configuration
-└── package.json           # NPM scripts and dependencies
+Fixtures/                         Custom Playwright fixtures
+PageObjects/                      SauceDemo page objects
+TestData/                         Login data and saved auth state
+Testcases/                        Playwright specs
+Testcases/APITestcases/           Nested API specs, including authenticated API tests
+Utils/                            CSV reader utility
 ```
 
-## Scenarios Covered
+## Test Coverage
 
-### UI Automation - SauceDemo
-
-- Login using credentials from a CSV file.
-- Login using credentials from a JSON file.
-- Complete end-to-end shopping flow:
-  - Open SauceDemo.
-  - Login.
-  - Add an item to cart.
-  - Checkout.
-  - Fill checkout information.
-  - Finish order.
-  - Logout.
-- Verify cart count persistence across multiple tabs.
-- Run multiple users in separate browser contexts to validate isolated sessions.
-
-### Authentication and Session Storage
-
-- Login once and save authenticated browser state to `TestData/auth.json`.
-- Reuse saved `storageState` in dependent tests.
-- Use a setup project with project dependencies for authenticated scenarios.
-
-### API Testing
-
-- Send GET requests using Playwright's `request` fixture.
-- Create records with POST requests.
-- Update records with PUT requests.
-- Validate response status codes and `response.ok()`.
-- Parse and inspect JSON response bodies.
-- Call Jira REST API dashboards endpoint using Basic Auth from environment variables.
-
-### Visual Testing
-
-- Capture and compare full-page screenshots.
-- Capture and compare element screenshots.
-- Use screenshot masking for dynamic UI areas.
-- Use `maxDiffPixels` to allow controlled visual differences.
-- Store visual baselines under snapshot folders.
-
-### Fixtures and Test Data
-
-- Extend Playwright's base test with custom fixtures.
-- Provide a shared `PageManager` fixture.
-- Create page managers for newly opened tabs.
-- Provide checkout data through a fixture.
-- Read external CSV data with a reusable utility.
-- Import JSON test data directly into specs.
-
-### Reporting and Debugging
-
-- Generate Playwright HTML reports.
-- Generate Allure reports with `allure-playwright`.
-- Collect traces using `trace: 'on'`.
-- Run tests in headed mode locally and headless mode in CI.
-
-## Important Playwright Concepts Covered
-
-- `test`, `expect`, and built-in fixtures such as `page`, `browser`, `context`, and `request`.
-- Locators using CSS selectors and role-based selectors.
-- Assertions such as `toHaveURL`, `toHaveTitle`, `toHaveText`, and `toHaveScreenshot`.
-- Page Object Model for maintainable UI automation.
-- Fixture extension with `base.extend()`.
-- Browser contexts for session isolation.
-- Multiple tabs using `context.newPage()`.
-- Storage state setup and reuse.
-- Project configuration, dependencies, `testMatch`, and `testIgnore`.
-- API testing without a browser through Playwright's request context.
-- Visual regression testing with screenshots.
-- Test data driven testing from CSV and JSON files.
-- Reporters and trace viewer support.
+- SauceDemo login from CSV and JSON data
+- SauceDemo end-to-end checkout flow
+- Cart persistence across browser tabs
+- Multiple users in separate browser contexts
+- Saved login session with `storageState`
+- REST API GET, POST, PUT, and PATCH tests
+- Authenticated REST API POST, PUT, PATCH, and DELETE tests
+- Jira dashboard API test
+- Visual screenshot comparison tests
 
 ## Setup
 
-Install dependencies:
-
 ```bash
 npm install
-```
-
-Install Playwright browsers if needed:
-
-```bash
 npx playwright install
 ```
 
-## Running Tests
+Allure report commands require the Allure CLI to be installed separately.
 
-Run the configured suite:
+## Run Tests
 
 ```bash
 npx playwright test
-```
-
-Run a specific spec:
-
-```bash
 npx playwright test Testcases/LoginTests.spec.js
-```
-
-Run the authenticated session project:
-
-```bash
-npx playwright test --project="login session storage"
-```
-
-Run API tests:
-
-```bash
 npx playwright test Testcases/APITestcases.spec.js
-```
-
-Run visual tests:
-
-```bash
+npx playwright test Testcases/APITestcases/AuthenticatedAPI.spec.js
 npx playwright test Testcases/VisualTesting.spec.js
-```
-
-Open the Playwright HTML report:
-
-```bash
-npx playwright show-report
+npx playwright test Testcases/JiraTestcases.spec.js
+npx playwright test --project="login session storage"
 ```
 
 ## NPM Scripts
 
 ```bash
-npm run runner2      # Run Playwright tests
-npm run api-allure   # Run API tests and open Allure report
-npm run ui-allure    # Run UI login tests and open Allure report
-npm run jira-allure  # Run Jira API tests and open Allure report
+npm run lint
+npm run lint:fix
+npm run runner2
+npm run clean-allure
+npm run api-allure
+npm run ui-allure
+npm run jira-allure
 ```
 
-## Jira API Test Configuration
+## Environment Variables
 
-The Jira API test expects these environment variables:
+Required for Jira API tests:
 
 ```bash
 export JIRA_EMAIL="your-email@example.com"
 export JIRA_API_TOKEN="your-api-token"
 ```
 
-Then run:
+Required for authenticated API fixture tests:
 
 ```bash
-npx playwright test Testcases/JiraTestcases.spec.js
+export API_KEY="your-api-key"
 ```
 
-## Notes
-
-- `playwright.config.js` currently sets `testDir` to `./Testcases`, so default runs execute specs from that folder.
-- Visual tests depend on stored baseline screenshots. If the UI changes intentionally, update snapshots with:
+## Reports
 
 ```bash
-npx playwright test Testcases/VisualTesting.spec.js --update-snapshots
+npx playwright show-report
+allure generate allure-results --clean -o allure-report
+allure open allure-report
 ```

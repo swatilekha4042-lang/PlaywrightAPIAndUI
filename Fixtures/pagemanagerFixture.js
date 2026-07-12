@@ -11,7 +11,7 @@ export const test = base.extend({
        await use((page)=> new PageManager(page))
     },
 
-    checkoutData: async ({ }, use) => {
+    checkoutData: async ({}, use) => {
         const checkoutData = {
             firstName: 'Swati',
             lastName: 'Behera',

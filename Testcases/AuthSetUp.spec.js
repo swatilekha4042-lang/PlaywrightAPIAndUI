@@ -6,8 +6,6 @@ test('authenticate', async ({page}) => {
     await page.locator('#password').fill('secret_sauce')
     await page.getByRole('button',{name:'Login'}).click()
     await expect(page).toHaveURL(/inventory/);
-    await page.context().storageState({
-        path:'testData/auth.json'
-    })
+    await page.context().storageState({path:'TestData/auth.json'})
     
 })
