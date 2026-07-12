@@ -1,7 +1,10 @@
 import { expect, test } from '../Fixtures/pagemanagerFixture.js'
-import { readCSV } from '../utils/csvReader.js'
-import jsonData from '../testData/jsonLoginData.json' with {type: 'json'}
-const testData = await readCSV('./testData/loginData.csv')
+import { readCSV } from '../Utils/csvReader.js'
+import jsonData from '../TestData/jsonLoginData.json' with {type: 'json'}
+import fs from 'fs'
+
+const testData = await readCSV('./TestData/loginData.csv')
+
 
 //Reading data from a csv file
 for (const data of testData) {
@@ -23,6 +26,21 @@ for (const data of jsonData) {
 
 }
 
+//  Reading and filtering data to use
+const enabledUsernames = JSON.parse(fs.readFileSync('./TestData/jsonLoginData.json', 'utf-8'))
+
+test.describe('Login scenario tests', () => {
+    enabledUsernames
+        .filter(data => data.username === "problem_user")
+        .forEach(data => {
+            test(`Login scenario for ${data.username}`, async ({ pageManager }) => {
+                await pageManager.getLoginPageInstance().openApplication()
+                await pageManager.getLoginPageInstance().loginToApplication(data.username, data.password)
+            })
+        });
+
+})
+
 /*End to end scenario :
 Login
 Add to Cart
@@ -30,26 +48,26 @@ Checkout
 Fill checkout form
 Logout
 */
-test('E2E Scenario', async ({ pageManager,checkoutData }) => {
-    
+test('E2E Scenario', async ({ pageManager, checkoutData }) => {
+
     await pageManager.getLoginPageInstance().openApplication()
     await pageManager.getLoginPageInstance().loginToApplication('standard_user', 'secret_sauce')
     await pageManager.getHomePageInstance().addItemToCart()
 
     await pageManager.getCartPageInstance().checkoutItem()
-    await pageManager.getCheckoutPageInstance().fillTheForm(checkoutData.firstName,checkoutData.lastName,checkoutData.pinCode)
+    await pageManager.getCheckoutPageInstance().fillTheForm(checkoutData.firstName, checkoutData.lastName, checkoutData.pinCode)
     await pageManager.getOverviewPageInstance().clickOnFinish()
     await pageManager.getHomePageInstance().logout()
 
 })
 
 /** To verify the shopping cart count persists in new tab as well */
-test('Verify shopping cart count persitence across tabs',async({context,pageManager,createNewPageManager}) => {
+test('Verify shopping cart count persitence across tabs', async ({ context, pageManager, createNewPageManager }) => {
 
     //Tab 1
     await pageManager.getLoginPageInstance().openApplication()
     await pageManager.getLoginPageInstance().loginToApplication('standard_user', 'secret_sauce')
-    await pageManager.getHomePageInstance().addItemToCart() 
+    await pageManager.getHomePageInstance().addItemToCart()
 
     //Tab 2
     const secondTab = await context.newPage()

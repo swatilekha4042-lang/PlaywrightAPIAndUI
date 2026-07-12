@@ -1,7 +1,7 @@
 import { test as base, expect, request } from '@playwright/test';
 
 export const test = base.extend({
-    apiContext: async ({ }, use) => {
+    apiContext: async ({}, use) => {
         const baseURL = 'https://api.restful-api.dev';
         //Step 1 : Create context to register
         const registerContext = await request.newContext({

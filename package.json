@@ -4,20 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "runner2": "npx playwright test",
     "clean-allure": "rm -rf allure-results allure-reports",
     "api-allure": "npm run clean-allure && npx playwright test Testcases/APITestcases.spec.js && allure generate allure-results --clean -o allure-report && allure open allure-report",
     "ui-allure": "npm run clean-allure && npx playwright test Testcases/LoginTests.spec.js && allure generate allure-results --clean -o allure-report && allure open allure-report",
-    "jira-allure":"npm run clean-allure && npx playwright test Testcases/JiraTestcases.spec.js ; allure generate allure-results --clean -o allure-report && allure open allure-report"
+    "jira-allure": "npm run clean-allure && npx playwright test Testcases/JiraTestcases.spec.js ; allure generate allure-results --clean -o allure-report && allure open allure-report"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.60.0",
     "@types/node": "^25.6.2",
-    "allure-playwright": "^3.9.0"
+    "allure-playwright": "^3.9.0",
+    "eslint": "^10.7.0",
+    "globals": "^17.7.0"
   },
   "dependencies": {
     "csv-parser": "^3.2.1"

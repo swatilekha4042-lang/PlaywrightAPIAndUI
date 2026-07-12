@@ -54,7 +54,7 @@ test('POST Request ', async ({ request }) => {
 
 test('PATCH Request ', async ({ request }) => {
 
-   const response = await request.put('https://api.restful-api.dev/objects/ff8081819d82fab6019e888276282dc7',
+   const response = await request.patch('https://api.restful-api.dev/objects/ff8081819d82fab6019e888276282dc7',
         {
         headers: {'Content-Type': 'application/json'},
         data: {
