@@ -45,6 +45,7 @@ jobs:
         retention-days: 14
 
     - name: Generate Allure Report
+      id: generate_report
       if: always()
       run: npx allure generate allure-results --clean -o allure-report
 
