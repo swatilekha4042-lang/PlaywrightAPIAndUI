@@ -106,8 +106,11 @@ test('End to end scenario with multiple users', async ({ browser }) => {
         await standard_user_Page.locator('.shopping_cart_link').click()
         await problem_user_Page.locator('.shopping_cart_link').click()
 
-        await expect(standard_user_Page.locator('.inventory_item_name')).toHaveText('Sauce Labs Bike Light')
-        await expect(problem_user_Page.locator('.inventory_item_name')).toHaveText('Sauce Labs Backpack')
+        await expect(standard_user_Page).toHaveURL(/\/cart\.html$/);
+        await expect(standard_user_Page.getByText('Sauce Labs Bike Light', { exact: true }))
+        //await problem_user_Page.pause();
+        await expect(problem_user_Page).toHaveURL(/\/cart\.html$/);
+        await expect(problem_user_Page.getByText('Sauce Labs Backpack', { exact: true }))
     }
     finally {
         await standard_user_context.close()

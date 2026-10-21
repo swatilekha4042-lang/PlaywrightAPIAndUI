@@ -3,7 +3,7 @@ import { test,expect } from "@playwright/test"
 test('Api to fetch the Jira dashboards',async ({request}) => {
     const email = process.env.JIRA_EMAIL
     const apiToken = process.env.JIRA_API_TOKEN
-    const baseUrl = 'https://swatilekha4042.atlassian.net'
+    const baseUrl = 'https://swatilekha-behera.atlassian.net'
 
     expect(email).toBeDefined();
     expect(apiToken).toBeDefined();

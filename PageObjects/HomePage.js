@@ -5,8 +5,8 @@ export class HomePage{
         this.page = page
         this.addToCart = page.locator("#add-to-cart-sauce-labs-bike-light")
         this.cart = page.locator('.shopping_cart_link')
-        this.burgerMenu = page.locator("#react-burger-menu-btn")
-        this.logoutLink = page.getByRole('link',{name : 'Logout'})
+        this.burgerMenu = page.getByRole("button",{name:"Open Menu"})
+        this.logoutLink = page.getByRole('button',{name:"Logout"})
         this.cartCount = page.locator('.shopping_cart_badge')
     }
 
@@ -18,8 +18,8 @@ export class HomePage{
     }
 
     async logout() {
-        await this.burgerMenu.click()
-        await this.logoutLink.click()
+        await this.burgerMenu.click();
+        await this.logoutLink.click();
     }
 
     async verifyVisualCartPage(){
